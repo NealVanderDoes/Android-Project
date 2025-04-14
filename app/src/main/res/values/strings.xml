@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pizza Clicker</string>
+    <string name="help">Help</string>
+    <string name="preferences">Preferences</string>
+    <string name="upgrades">Upgrades</string>
+    <string name="starter_pizza">Starter Pizza</string>
+    <string name="larger_size">Larger Size</string>
+    <string name="larger_size_description">Upgrade size and money per click.</string>
+    <string name="larger_size_price">100</string>
+    <string name="back_button">Back</string>
+</resources>

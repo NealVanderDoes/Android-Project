@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <!-- Pizza Base -->
+    <path
+        android:fillColor="#F4A261"
+        android:pathData="M100,20a80,80 0 1,0 0,160a80,80 0 1,0 0,-160" />
+    <!-- Cheese Layer -->
+    <path
+        android:fillColor="#FFDD57"
+        android:pathData="M100,30a70,70 0 1,0 0,140a70,70 0 1,0 0,-140" />
+</vector>
