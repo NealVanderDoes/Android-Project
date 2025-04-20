@@ -34,13 +34,14 @@ import com.example.pizzaclicker.R
 fun PizzaClickerScreen(
     money: Int,
     @DrawableRes pizzaImageId: Int,
+    onSettingsButtonClicked: () -> Unit,
     onUpgradeButtonClicked: () -> Unit,
     onPizzaClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
-            .background(Color(0xFF2962FF))
+            .background(color = Color(0xFF2962FF))
     ) {
         Column {
             Box(
@@ -49,6 +50,7 @@ fun PizzaClickerScreen(
             ) {
                 DisplayMoney(money = money)
                 DisplaySettingsButton(
+                    onSettingsButtonClicked = onSettingsButtonClicked,
                     modifier = Modifier
                     .align(Alignment.TopStart)
                 )
@@ -119,10 +121,11 @@ fun MoneyInfo(
 
 @Composable
 fun DisplaySettingsButton(
-    modifier: Modifier
+    onSettingsButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Button(
-        onClick = {},
+        onClick = onSettingsButtonClicked,
         shape = RoundedCornerShape(24.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(0xFF2962FF),
@@ -144,7 +147,7 @@ fun DisplaySettingsButton(
 @Composable
 fun DisplayUpgradesButton(
     onUpgradeButtonClicked: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Button(
         onClick = onUpgradeButtonClicked,
@@ -158,5 +161,4 @@ fun DisplayUpgradesButton(
     ) {
         Text(text = "Upgrades")
     }
-
 }

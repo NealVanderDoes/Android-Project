@@ -1,10 +1,8 @@
-package com.example.pizzaclicker.ui.theme
+package com.example.pizzaclicker.model
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.pizzaclicker.data.Datasource.pizzaList
 import com.example.pizzaclicker.data.PizzaUiState
-import com.example.pizzaclicker.model.Upgrade
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -47,6 +45,11 @@ class PizzaViewModel : ViewModel() {
         _pizzaUiState.update { pizzaUiState ->
             pizzaUiState.copy(upgradesPurchased = pizzaUiState.upgradesPurchased + 1)
         }
-
+    }
+    fun onResetClicked() {
+        // TODO: Reset the game state
+    }
+    fun onPrestigeClicked() {
+        // TODO: Reset the game state and apply prestige effects (x2 money)
     }
 }

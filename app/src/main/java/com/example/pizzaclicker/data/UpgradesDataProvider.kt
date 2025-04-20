@@ -11,5 +11,11 @@ object UpgradesDataProvider {
             description = R.string.larger_size_description,
             icon = R.drawable.larger_size
         )
+//        Upgrade(
+//            name = R.string.Lucky_Click,
+//            price = R.string.Lucky_Click_price,
+//            description = R.string.Lucky_Click_description,
+//            icon = R.drawable.lucky_click
+//        )
     )
 }

@@ -10,10 +10,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -23,8 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pizzaclicker.R
-import com.example.pizzaclicker.ui.theme.PizzaViewModel
-import androidx.compose.foundation.layout.size
+import com.example.pizzaclicker.model.PizzaViewModel
 import com.example.pizzaclicker.data.UpgradesDataProvider
 
 enum class PizzaClickerAppScreens(@StringRes val title: Int) {
@@ -45,22 +46,22 @@ fun PizzaClickerApp(
 
     Scaffold(
         // Broken right now
-//        topBar = {
-//            PizzaClickerAppBar(
-//                currentScreen = PizzaClickerAppScreens.valueOf(
-//                    backStackEntry?.destination?.route ?: PizzaClickerAppScreens.Start.name
-//                ),
-//                canNavigateBack = navController.previousBackStackEntry != null,
-//                navigateUp = { navController.navigateUp() },
-//                modifier = modifier
-//            )
-//        }
-
-    ) { contentPadding ->
+        topBar = {
+            PizzaClickerAppBar(
+                currentScreen = PizzaClickerAppScreens.valueOf(
+                    backStackEntry?.destination?.route ?: PizzaClickerAppScreens.Start.name
+                ),
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() },
+                modifier = modifier
+            )
+        }
+    ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = PizzaClickerAppScreens.Start.name,
-            modifier = modifier.padding(contentPadding)
+            modifier = modifier
+                .padding(innerPadding)
         ) {
             composable(route = PizzaClickerAppScreens.Start.name) {
                 PizzaClickerScreen(
@@ -69,17 +70,21 @@ fun PizzaClickerApp(
                     onPizzaClicked = { viewModel.onPizzaClicked() },
                     onUpgradeButtonClicked = { navController
                         .navigate(PizzaClickerAppScreens.Upgrades.name) },
-                    modifier = modifier.padding(contentPadding)
+                    onSettingsButtonClicked = { navController
+                        .navigate(PizzaClickerAppScreens.Help.name) },
+                    modifier = modifier
                 )
             }
             composable(route = PizzaClickerAppScreens.Help.name) {
                 HelpScreen(
-                    //TODO: ADD HELP SCREEN)
+                    onPreferencesButtonClicked = { navController
+                        .navigate(PizzaClickerAppScreens.Preferences.name) },
                 )
             }
             composable(route = PizzaClickerAppScreens.Preferences.name) {
                 PreferencesScreen(
-                    //TODO: ADD PREFERENCES SCREEN)
+                    onResetClicked = { viewModel.onResetClicked() },
+                    onPrestigeClicked = { viewModel.onPrestigeClicked() }
                 )
             }
             composable(route = PizzaClickerAppScreens.Upgrades.name) {
@@ -99,7 +104,13 @@ fun PizzaClickerAppBar(
     modifier: Modifier = Modifier
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(stringResource(currentScreen.title)) },
+        title = { if (canNavigateBack) {
+            Text(stringResource(currentScreen.title)) }},
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF2962FF),
+            titleContentColor = Color.Black,
+            navigationIconContentColor = Color.Black
+        ),
         modifier = modifier,
         navigationIcon = {
             if (canNavigateBack) {

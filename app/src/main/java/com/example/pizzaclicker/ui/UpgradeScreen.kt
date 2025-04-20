@@ -28,7 +28,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -36,10 +35,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pizzaclicker.data.PizzaUiState
-import com.example.pizzaclicker.ui.theme.PizzaViewModel
-import kotlinx.coroutines.flow.map
-import kotlin.math.absoluteValue
+import com.example.pizzaclicker.model.PizzaViewModel
 
 
 @Composable
@@ -116,6 +112,7 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
                                     val newMoney = money - upgradePrice
                                     viewModel.updateMoney(newMoney)
                                     viewModel.buyUpgrade(upgrade)
+
                                     isPurchased = true // Update the state to reflect the purchase (not working)
                                     println(isPurchased)
                                 }
