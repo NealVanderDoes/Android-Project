@@ -5,7 +5,7 @@
     <string name="upgrades">Upgrades</string>
     <string name="starter_pizza">Starter Pizza</string>
     <string name="larger_size">Larger Size</string>
-    <string name="larger_size_description">Upgrade size and money per click.</string>
+    <string name="larger_size_description">Adds pepperoni to the pizza, increasing money earned by 5 per click. Tap the pizza to refresh.</string>
     <string name="larger_size_price">100</string>
     <string name="back_button">Back</string>
     <string name="app_desc">The Pizza Clicker app is a small clicker game.\nThe app includes upgrades to increase the price of the pizza, earning you \nmore money for each click. The goal of this app is to just have fun!</string>

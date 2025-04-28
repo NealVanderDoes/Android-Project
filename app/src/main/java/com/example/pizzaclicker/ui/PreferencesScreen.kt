@@ -1,5 +1,7 @@
 package com.example.pizzaclicker.ui
 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,15 +18,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pizzaclicker.R
+import com.example.pizzaclicker.model.PizzaViewModel
 
-// DISPLAY THIS BUTTON INSIDE OF THE SETTINGS BUTTON
 @Composable
 fun PreferencesScreen(
     onResetClicked: () -> Unit,
@@ -73,6 +77,7 @@ fun PreferencesScreen(
 
 @Composable
 fun ResetButton(onResetClicked: () -> Unit, modifier: Modifier = Modifier) {
+    // Needs functionality
     Button(
         onClick = onResetClicked,
         shape = RoundedCornerShape(24.dp),
@@ -89,15 +94,34 @@ fun ResetButton(onResetClicked: () -> Unit, modifier: Modifier = Modifier) {
 
 @Composable
 fun PrestigeButton(onPrestigeClicked: () -> Unit, modifier: Modifier = Modifier) {
+    val viewModel: PizzaViewModel = viewModel(LocalActivity.current as ComponentActivity)
+    val uiState = viewModel.pizzaUiState.collectAsState()
+    val money = uiState.value.money
+    val prestiged = uiState.value.prestiged
+
+    val prestigeCost = 150 // Temp value. Correct number should be 10_000
+
     Button(
-        onClick = onPrestigeClicked,
+        onClick = { // BUG: RESETS MONEY ANYWAY EVEN IF YOU CANT AFFORD
+            if (prestiged)
+                return@Button
+            else if (money >= prestigeCost)
+            onPrestigeClicked()
+            viewModel.updateMoney(0) // RESET EVERYTHING ELSE AS WELL
+                  },
         shape = RoundedCornerShape(24.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF66BB6A)
+            if (prestiged) Color.Gray
+            else if (money >= prestigeCost)
+                Color(0xFF66BB6A) else Color.Gray,
+            contentColor = Color.White
         ),
-        modifier = Modifier
+        modifier = modifier
             .padding(24.dp)
     ) {
-        Text(text = "Prestige")
+        if (!prestiged) {
+            Text(text = "Prestige: $$prestigeCost")
+        } else
+            Text(text = "Prestige: Unlocked")
     }
 }

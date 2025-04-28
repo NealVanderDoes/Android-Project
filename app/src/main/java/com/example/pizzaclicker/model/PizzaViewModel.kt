@@ -21,12 +21,14 @@ class PizzaViewModel : ViewModel() {
                 money = pizzaUiState.money + pizzaUiState.moneyPerClick,
                 upgradesPurchased = upgradesPurchased,
                 pizzaImage = pizzaList[nextPizzaIndex].imageId,
-                moneyPerClick = pizzaList[nextPizzaIndex].price
+                moneyPerClick = if (_pizzaUiState.value.prestiged) {
+                    pizzaList[nextPizzaIndex].price * 2
+                } else pizzaList[nextPizzaIndex].price
             )
         }
     }
 
-     private fun determineNextPizzaIndex(upgradesPurchased: Int): Int {
+    private fun determineNextPizzaIndex(upgradesPurchased: Int): Int {
         var pizzaIndex = 0
         for (index in pizzaList.indices) {
             if (upgradesPurchased >= pizzaList[index].upgradeNumber) {
@@ -39,17 +41,26 @@ class PizzaViewModel : ViewModel() {
     }
 
     fun updateMoney(newAmount: Int) {
-        _pizzaUiState.update { it.copy(money = newAmount)}
+        _pizzaUiState.update { it.copy(money = newAmount) }
     }
-    fun buyUpgrade(upgrade: Upgrade) {
+
+    fun buyUpgrade() {
         _pizzaUiState.update { pizzaUiState ->
             pizzaUiState.copy(upgradesPurchased = pizzaUiState.upgradesPurchased + 1)
         }
     }
+
     fun onResetClicked() {
-        // TODO: Reset the game state
+        TODO()
     }
+
     fun onPrestigeClicked() {
-        // TODO: Reset the game state and apply prestige effects (x2 money)
+        _pizzaUiState.update { pizzaUiState ->
+            pizzaUiState.copy(
+                money = pizzaUiState.money,
+                moneyPerClick = pizzaUiState.moneyPerClick,
+                prestiged = true
+            )
+        }
     }
 }

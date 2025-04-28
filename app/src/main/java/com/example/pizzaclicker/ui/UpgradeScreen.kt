@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -36,6 +37,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pizzaclicker.model.PizzaViewModel
+import com.example.pizzaclicker.model.UpgradeViewModel
 
 
 @Composable
@@ -51,15 +53,17 @@ fun UpgradesScreen(upgrades: List<Upgrade>, modifier: Modifier = Modifier) {
 
 @Composable
 fun UpgradesList(upgrades: List<Upgrade>, modifier: Modifier = Modifier) {
+    // Change to LazyColumn if there's time.
     LazyVerticalGrid(
         modifier = modifier,
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Fixed(1),
     ) {
         items(upgrades) { upgrade ->
             UpgradeItem(
                 upgrade = upgrade,
                 modifier = Modifier
                     .padding(8.dp)
+                    .fillMaxWidth()
             )
         }
     }
@@ -70,10 +74,13 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
     // Important: Reads the current activity instead of creating a new one
     val viewModel: PizzaViewModel = viewModel(LocalActivity.current as ComponentActivity)
     val uiState = viewModel.pizzaUiState.collectAsState()
+    val upgradeViewModel: UpgradeViewModel = viewModel(LocalActivity.current as ComponentActivity)
+    val upgradeUiState = upgradeViewModel.upgradeUiState.collectAsState()
+
 
     val money = uiState.value.money
     val upgradePrice = LocalContext.current.getString(upgrade.price).toInt()
-    var isPurchased = upgrade.purchased
+    var isPurchased = upgradeUiState.value.purchased
     Box(
         modifier = modifier
             .clip(shape = RoundedCornerShape(6.dp))
@@ -91,12 +98,12 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .size(85.dp)
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(
                     text = LocalContext.current.getString(upgrade.description),
                     modifier = Modifier,
-                    style = MaterialTheme.typography.labelSmall
+                    style = MaterialTheme.typography.labelLarge
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(
@@ -111,31 +118,29 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
                                 if (money >= upgradePrice) {
                                     val newMoney = money - upgradePrice
                                     viewModel.updateMoney(newMoney)
-                                    viewModel.buyUpgrade(upgrade)
+                                    viewModel.buyUpgrade()
+                                    upgradeViewModel.onUpgradeClicked()
 
-                                    isPurchased = true // Update the state to reflect the purchase (not working)
-                                    println(isPurchased)
                                 }
                             },
                             colors = ButtonDefaults.buttonColors(
                                 if (money >= upgradePrice)
-                                    Color.Green else Color.Gray,
-                                contentColor = Color.Black
+                                    Color(0xFF66BB6A) else Color.Gray,
+                                contentColor = Color.White
                             ),
                             modifier = Modifier
-                                .size(65.dp, 30.dp),
 
-                            ) {
+                        ) {
                             Text(
                                 text = "Buy",
-                                style = MaterialTheme.typography.labelSmall
+                                style = MaterialTheme.typography.labelLarge
                             )
                         }
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(16.dp))
                         Text(
-                            text = "$upgradePrice",
+                            text = "$$upgradePrice",
                             modifier = Modifier,
-                            style = MaterialTheme.typography.labelSmall
+                            style = MaterialTheme.typography.labelLarge
                         )
                     } else {
                         Button(
@@ -145,11 +150,10 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
                                 contentColor = Color.Black
                             ),
                             modifier = Modifier
-                                .size(65.dp, 30.dp)
                         ) {
                             Text(
                                 text = "Purchased",
-                                style = MaterialTheme.typography.labelSmall
+                                style = MaterialTheme.typography.labelLarge
                             )
                         }
                     }

@@ -12,12 +12,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -25,8 +24,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.pizzaclicker.R
-import com.example.pizzaclicker.model.PizzaViewModel
 import com.example.pizzaclicker.data.UpgradesDataProvider
+import com.example.pizzaclicker.model.PizzaViewModel
 
 enum class PizzaClickerAppScreens(@StringRes val title: Int) {
     Start(title = R.string.app_name),
@@ -41,7 +40,7 @@ fun PizzaClickerApp(
     modifier: Modifier = Modifier
 ) {
     val viewModel: PizzaViewModel = viewModel()
-    val uiState by viewModel.pizzaUiState.collectAsState()
+    val uiState by viewModel.pizzaUiState.collectAsStateWithLifecycle()
     val backStackEntry by navController.currentBackStackEntryAsState()
 
     Scaffold(
@@ -84,7 +83,11 @@ fun PizzaClickerApp(
             composable(route = PizzaClickerAppScreens.Preferences.name) {
                 PreferencesScreen(
                     onResetClicked = { viewModel.onResetClicked() },
-                    onPrestigeClicked = { viewModel.onPrestigeClicked() }
+                    onPrestigeClicked = {
+                        viewModel.onPrestigeClicked()
+                        navController.navigate(PizzaClickerAppScreens.Start.name
+                        )
+                    }
                 )
             }
             composable(route = PizzaClickerAppScreens.Upgrades.name) {

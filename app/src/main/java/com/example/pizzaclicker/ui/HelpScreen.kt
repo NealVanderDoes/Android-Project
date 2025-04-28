@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.pizzaclicker.R
@@ -60,6 +61,7 @@ fun AppDesc(modifier: Modifier = Modifier) {
         Text(
             text = "App Description",
             style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.SemiBold,
             textDecoration = TextDecoration.Underline,
             color = Color.Black,
             modifier = Modifier
@@ -69,6 +71,7 @@ fun AppDesc(modifier: Modifier = Modifier) {
         Text(
             text = stringResource(R.string.app_desc),
             style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Medium,
             color = Color.Black,
             modifier = Modifier
                 .padding(4.dp)
@@ -80,13 +83,14 @@ fun AppDesc(modifier: Modifier = Modifier) {
 @Composable
 fun PrestigeDesc(modifier: Modifier = Modifier) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp),
         shape = MaterialTheme.shapes.small
     ) {
         Text(
             text = "Prestige Description",
             style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Medium,
             textDecoration = TextDecoration.Underline,
             color = Color.Black,
             modifier = Modifier
@@ -96,6 +100,7 @@ fun PrestigeDesc(modifier: Modifier = Modifier) {
         Text(
             text = stringResource(R.string.prestige_desc),
             style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Medium,
             color = Color.Black,
             modifier = Modifier
                 .padding(4.dp)
@@ -107,13 +112,14 @@ fun PrestigeDesc(modifier: Modifier = Modifier) {
 @Composable
 fun ResetDesc(modifier: Modifier = Modifier) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp),
         shape = MaterialTheme.shapes.small
     ) {
         Text(
             text = "Reset Description",
             style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Medium,
             textDecoration = TextDecoration.Underline,
             color = Color.Black,
             modifier = Modifier
@@ -123,6 +129,7 @@ fun ResetDesc(modifier: Modifier = Modifier) {
         Text(
             text = stringResource(R.string.reset_desc),
             style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Medium,
             color = Color.Black,
             modifier = Modifier
                 .padding(4.dp)

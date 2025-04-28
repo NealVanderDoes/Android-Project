@@ -8,5 +8,4 @@ data class Upgrade(
     @StringRes var price: Int,
     @StringRes val description: Int,
     @DrawableRes val icon: Int,
-    var purchased: Boolean = false
     )
