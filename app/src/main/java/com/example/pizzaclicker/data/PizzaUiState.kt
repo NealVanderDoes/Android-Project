@@ -1,7 +1,7 @@
 package com.example.pizzaclicker.data
 
 import androidx.annotation.DrawableRes
-import com.example.pizzaclicker.data.Datasource.pizzaList
+import com.example.pizzaclicker.data.PizzaListDatasource.pizzaList
 
 data class PizzaUiState(
     var prestiged: Boolean = false,

@@ -1,4 +1,4 @@
-package com.example.pizzaclicker.ui
+package com.example.pizzaclicker.ui.screens
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -52,7 +53,7 @@ fun PizzaClickerScreen(
                 DisplaySettingsButton(
                     onSettingsButtonClicked = onSettingsButtonClicked,
                     modifier = Modifier
-                    .align(Alignment.TopStart)
+                        .align(Alignment.TopStart)
                 )
                 Image(
                     painter = painterResource(pizzaImageId),
@@ -137,11 +138,10 @@ fun DisplaySettingsButton(
         Image(
             painterResource(R.drawable.baseline_settings_24),
             contentDescription = null,
-            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(Color.Gray),
+            colorFilter = ColorFilter.tint(Color.Gray),
             modifier = Modifier
         )
     }
-
 }
 
 @Composable
@@ -159,6 +159,6 @@ fun DisplayUpgradesButton(
             .padding(24.dp)
             .fillMaxWidth()
     ) {
-        Text(text = "Upgrades")
+        Text(text = "Upgrade")
     }
 }

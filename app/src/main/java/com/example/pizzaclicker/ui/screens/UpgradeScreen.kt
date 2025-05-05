@@ -1,4 +1,4 @@
-package com.example.pizzaclicker.ui
+package com.example.pizzaclicker.ui.screens
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
@@ -53,7 +53,6 @@ fun UpgradesScreen(upgrades: List<Upgrade>, modifier: Modifier = Modifier) {
 
 @Composable
 fun UpgradesList(upgrades: List<Upgrade>, modifier: Modifier = Modifier) {
-    // Change to LazyColumn if there's time.
     LazyVerticalGrid(
         modifier = modifier,
         columns = GridCells.Fixed(1),
@@ -76,7 +75,6 @@ fun UpgradeItem(upgrade: Upgrade, modifier: Modifier = Modifier) {
     val uiState = viewModel.pizzaUiState.collectAsState()
     val upgradeViewModel: UpgradeViewModel = viewModel(LocalActivity.current as ComponentActivity)
     val upgradeUiState = upgradeViewModel.upgradeUiState.collectAsState()
-
 
     val money = uiState.value.money
     val upgradePrice = LocalContext.current.getString(upgrade.price).toInt()

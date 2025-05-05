@@ -1,4 +1,4 @@
-package com.example.pizzaclicker.ui
+package com.example.pizzaclicker
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
@@ -23,9 +23,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.pizzaclicker.R
 import com.example.pizzaclicker.data.UpgradesDataProvider
 import com.example.pizzaclicker.model.PizzaViewModel
+import com.example.pizzaclicker.ui.screens.HelpScreen
+import com.example.pizzaclicker.ui.screens.PizzaClickerScreen
+import com.example.pizzaclicker.ui.screens.PreferencesScreen
+import com.example.pizzaclicker.ui.screens.UpgradesScreen
 
 enum class PizzaClickerAppScreens(@StringRes val title: Int) {
     Start(title = R.string.app_name),
@@ -67,31 +70,44 @@ fun PizzaClickerApp(
                     money = uiState.money,
                     pizzaImageId = uiState.pizzaImage,
                     onPizzaClicked = { viewModel.onPizzaClicked() },
-                    onUpgradeButtonClicked = { navController
-                        .navigate(PizzaClickerAppScreens.Upgrades.name) },
-                    onSettingsButtonClicked = { navController
-                        .navigate(PizzaClickerAppScreens.Help.name) },
+                    onUpgradeButtonClicked = {
+                        navController
+                            .navigate(PizzaClickerAppScreens.Upgrades.name)
+                    },
+                    onSettingsButtonClicked = {
+                        navController
+                            .navigate(PizzaClickerAppScreens.Help.name)
+                    },
                     modifier = modifier
                 )
             }
             composable(route = PizzaClickerAppScreens.Help.name) {
                 HelpScreen(
-                    onPreferencesButtonClicked = { navController
-                        .navigate(PizzaClickerAppScreens.Preferences.name) },
+                    onPreferencesButtonClicked = {
+                        navController
+                            .navigate(PizzaClickerAppScreens.Preferences.name)
+                    },
                 )
             }
             composable(route = PizzaClickerAppScreens.Preferences.name) {
                 PreferencesScreen(
-                    onResetClicked = { viewModel.onResetClicked() },
+                    onResetClicked = {
+                        viewModel.onResetClicked()
+                        navController.navigate(
+                            PizzaClickerAppScreens.Start.name
+                        )
+                    },
                     onPrestigeClicked = {
                         viewModel.onPrestigeClicked()
-                        navController.navigate(PizzaClickerAppScreens.Start.name
+                        navController.navigate(
+                            PizzaClickerAppScreens.Start.name
                         )
                     }
                 )
             }
             composable(route = PizzaClickerAppScreens.Upgrades.name) {
-                UpgradesScreen( upgrades = UpgradesDataProvider.upgrades,
+                UpgradesScreen(
+                    upgrades = UpgradesDataProvider.upgrades,
                 )
             }
         }

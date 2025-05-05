@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.pizzaclicker.ui.PizzaClickerApp
 import com.example.pizzaclicker.ui.theme.PizzaClickerTheme
 
 class MainActivity : ComponentActivity() {

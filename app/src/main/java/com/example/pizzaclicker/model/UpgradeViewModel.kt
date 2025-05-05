@@ -18,4 +18,13 @@ class UpgradeViewModel : ViewModel() {
             )
         }
     }
+
+
+    fun resetUpgrades() {
+        _upgradeUiState.update { upgradeUiState ->
+            upgradeUiState.copy(
+                purchased = false
+            )
+        }
+    }
 }

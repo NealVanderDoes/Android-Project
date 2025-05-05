@@ -1,7 +1,7 @@
 package com.example.pizzaclicker.model
 
 import androidx.lifecycle.ViewModel
-import com.example.pizzaclicker.data.Datasource.pizzaList
+import com.example.pizzaclicker.data.PizzaListDatasource.pizzaList
 import com.example.pizzaclicker.data.PizzaUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -51,7 +51,15 @@ class PizzaViewModel : ViewModel() {
     }
 
     fun onResetClicked() {
-        TODO()
+        _pizzaUiState.update { pizzaUiState ->
+            pizzaUiState.copy(
+                money = 0,
+                moneyPerClick = pizzaList[0].price,
+                upgradesPurchased = 0,
+                pizzaImage = pizzaList[0].imageId,
+                prestiged = false
+            )
+        }
     }
 
     fun onPrestigeClicked() {

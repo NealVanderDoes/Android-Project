@@ -2,14 +2,18 @@
     <string name="app_name">Pizza Clicker</string>
     <string name="help">Help</string>
     <string name="preferences">Preferences</string>
-    <string name="upgrades">Upgrades</string>
+    <string name="upgrades">Upgrade</string>
     <string name="starter_pizza">Starter Pizza</string>
-    <string name="larger_size">Larger Size</string>
-    <string name="larger_size_description">Adds pepperoni to the pizza, increasing money earned by 5 per click. Tap the pizza to refresh.</string>
-    <string name="larger_size_price">100</string>
+
     <string name="back_button">Back</string>
-    <string name="app_desc">The Pizza Clicker app is a small clicker game.\nThe app includes upgrades to increase the price of the pizza, earning you \nmore money for each click. The goal of this app is to just have fun!</string>
+
+    <string name="pepperoni_and_cheese_pizza">Pepperoni and Extra Cheese Pizza</string>
+    <string name="pepperoni_and_cheese_pizza_description">Adds pepperoni and extra cheese to the pizza, increasing money earned to 5 per click. Tap the pizza to refresh.</string>
+    <string name="pepperoni_and_cheese_pizza_price">100</string>"
+
+    <string name="app_desc">The Pizza Clicker app is a small clicker game.\nThe app includes an upgrade to increase the price of the pizza, earning you \nmore money for each click. The goal of this app is to just have fun!</string>
     <string name="prestige_desc">Prestiging resets your money and upgrades, but gives you a permanent x2 click boost! Prestige button located in Preferences.</string>
     <string name="reset_desc">Resetting wipes all your data allowing you to start completely fresh. Reset button located in Preferences.</string>
     <string name="preferences_warning">WARNING: Clicking either the \"Prestige\" or \"Reset\" buttons will reset your progress! Only click them if you are sure that is what you want to do.</string>
+
 </resources>

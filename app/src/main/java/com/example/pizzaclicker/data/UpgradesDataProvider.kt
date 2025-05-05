@@ -6,16 +6,10 @@ import com.example.pizzaclicker.R
 object UpgradesDataProvider {
     val upgrades = listOf(
         Upgrade(
-            name = R.string.larger_size,
-            price = R.string.larger_size_price,
-            description = R.string.larger_size_description,
-            icon = R.drawable.larger_size
+            name = R.string.pepperoni_and_cheese_pizza,
+            price = R.string.pepperoni_and_cheese_pizza_price,
+            description = R.string.pepperoni_and_cheese_pizza_description,
+            icon = R.drawable.pepperoni_and_cheese_pizza,
         )
-//        Upgrade(
-//            name = R.string.Lucky_Click,
-//            price = R.string.Lucky_Click_price,
-//            description = R.string.Lucky_Click_description,
-//            icon = R.drawable.lucky_click
-//        )
     )
 }

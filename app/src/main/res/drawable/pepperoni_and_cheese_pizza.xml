@@ -1,0 +1,63 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Pizza Base -->
+    <path
+        android:fillColor="#F4A261"
+        android:pathData="M100,20a80,80 0 1,0 0,160a80,80 0 1,0 0,-160" />
+    
+    <!-- Cheese Layer -->
+    <path
+        android:fillColor="#FFDD57"
+        android:pathData="M100,30a70,70 0 1,0 0,140a70,70 0 1,0 0,-140" />
+
+    <!-- Cheese Blobs -->
+    <path android:fillColor="#FFF89A" android:pathData="M65,55a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+    <path android:fillColor="#FFE680" android:pathData="M90,45a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFF7AA" android:pathData="M115,50a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+    <path android:fillColor="#FFF89A" android:pathData="M135,70a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+    <path android:fillColor="#FFEB8C" android:pathData="M145,100a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFF8B0" android:pathData="M135,130a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFE680" android:pathData="M110,145a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+    <path android:fillColor="#FFF7AA" android:pathData="M85,140a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+    <path android:fillColor="#FFF89A" android:pathData="M60,120a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFF7AA" android:pathData="M55,90a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFF9A1" android:pathData="M70,105a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+    <path android:fillColor="#FFF6A5" android:pathData="M100,75a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <path android:fillColor="#FFF8B0" android:pathData="M120,115a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+    <path android:fillColor="#FFF89A" android:pathData="M95,100a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+    <path android:fillColor="#FFE680" android:pathData="M80,80a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+
+    <!-- Cheese Shreds -->
+    <path android:fillColor="#FFEC99" android:pathData="M70,70h6v2h-6z" />
+    <path android:fillColor="#FFF9A1" android:pathData="M130,80h5v1.5h-5z" />
+    <path android:fillColor="#FFE680" android:pathData="M100,95h7v2h-7z" />
+    <path android:fillColor="#FFF7AA" android:pathData="M85,110h4v1h-4z" />
+    <path android:fillColor="#FFF89A" android:pathData="M115,130h6v2h-6z" />
+    <path android:fillColor="#FFEB8C" android:pathData="M95,70h5v2h-5z" />
+    <path android:fillColor="#FFF9B1" android:pathData="M125,115h6v1.5h-6z" />
+    <path android:fillColor="#FFE680" android:pathData="M75,115h4v2h-4z" />
+    <path android:fillColor="#FFF89A" android:pathData="M100,145h5v2h-5z" />
+    <path android:fillColor="#FFF9B1" android:pathData="M115,85l4,2l-2,2l-4,-2z" />
+    <path android:fillColor="#FFE68A" android:pathData="M70,95l3,1.5l-1.5,1.5l-3,-1.5z" />
+    <path android:fillColor="#FFF6A5" android:pathData="M130,105l4,1l-1,2l-4,-1z" />
+    <path android:fillColor="#FFF8B0" android:pathData="M90,130l3,2l-2,1l-3,-2z" />
+	
+	<!-- Pepperoni -->
+    <path android:fillColor="#D62828" android:pathData="M60,60a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+    <path android:fillColor="#D62828" android:pathData="M120,55a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+    <path android:fillColor="#D62828" android:pathData="M80,100a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+    <path android:fillColor="#D62828" android:pathData="M140,100a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+    <path android:fillColor="#D62828" android:pathData="M100,130a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+    <path android:fillColor="#D62828" android:pathData="M70,135a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	<path android:fillColor="#D62828" android:pathData="M50,90a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	<path android:fillColor="#D62828" android:pathData="M110,85a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	<path android:fillColor="#D62828" android:pathData="M130,125a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	<path android:fillColor="#D62828" android:pathData="M85,60a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	<path android:fillColor="#D62828" android:pathData="M100,100a10,10 0 1,0 0,20a10,10 0 1,0 0,-20" />
+	
+	
+</vector>
