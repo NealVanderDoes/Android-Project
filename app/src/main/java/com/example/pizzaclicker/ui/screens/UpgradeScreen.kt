@@ -41,14 +41,17 @@ import com.example.pizzaclicker.model.UpgradeViewModel
 
 
 @Composable
-fun UpgradesScreen(upgrades: List<Upgrade>, modifier: Modifier = Modifier) {
-    UpgradesList(
-        upgrades = upgrades,
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(0xFF2962FF))
-    )
-
+fun UpgradesScreen(upgrades: List<Upgrade>, money: Int, modifier: Modifier = Modifier) {
+    Column {
+        DisplayMoney(money = money)
+        Spacer(modifier = modifier.weight(1f))
+        UpgradesList(
+            upgrades = upgrades,
+            modifier = modifier
+                .fillMaxSize()
+                .background(Color(0xFF2962FF))
+        )
+    }
 }
 
 @Composable

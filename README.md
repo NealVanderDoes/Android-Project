@@ -15,6 +15,3 @@ I have included the Main Activity as the home-screen with the clickable pizza, I
 Activity as the upgrade section. The Settings button houses Home screen the Preferences button. The 
 Preferences button takes you to the Preferences screen, which holds the Prestige and Reset buttons.
 
-To Do
-------
-Add comments to code

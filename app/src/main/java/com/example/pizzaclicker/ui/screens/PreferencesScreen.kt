@@ -34,6 +34,7 @@ import com.example.pizzaclicker.model.UpgradeViewModel
 fun PreferencesScreen(
     onResetClicked: () -> Unit,
     onPrestigeClicked: () -> Unit,
+    money: Int,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -42,6 +43,7 @@ fun PreferencesScreen(
             .background(Color(0xFF2962FF))
     ) {
         Column {
+            DisplayMoney(money = money)
             Spacer(modifier = modifier.weight(1f))
             Card(
                 shape = MaterialTheme.shapes.small,

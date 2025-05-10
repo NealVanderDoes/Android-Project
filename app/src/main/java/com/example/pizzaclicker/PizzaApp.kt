@@ -102,12 +102,14 @@ fun PizzaClickerApp(
                         navController.navigate(
                             PizzaClickerAppScreens.Start.name
                         )
-                    }
+                    },
+                    money = uiState.money,
                 )
             }
             composable(route = PizzaClickerAppScreens.Upgrades.name) {
                 UpgradesScreen(
                     upgrades = UpgradesDataProvider.upgrades,
+                    money = uiState.money,
                 )
             }
         }
